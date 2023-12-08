@@ -9,4 +9,6 @@ include("circuit.jl")
 include("apply.jl")
 include("braket.jl")
 
+include("gate.jl")
+
 end

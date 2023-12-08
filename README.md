@@ -27,3 +27,7 @@ braket"<ψ|CX(1,2)|ψ>"
 ```
 
 Note that brakets will be read from right to left.
+
+## License
+
+MIT
