@@ -3,6 +3,12 @@
 Supersimple quantum circuit simulator Qailo.jl,
 inspired by [qailo in Python](https://github.com/wistaria/qailo).
 
+## Expectation
+
+* Julia 1.9-
+
+## Installation
+
 ## Circuit notation
 
 ```julia
