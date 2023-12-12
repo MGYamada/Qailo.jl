@@ -9,6 +9,10 @@ inspired by [qailo in Python](https://github.com/wistaria/qailo).
 
 ## Installation
 
+```julia
+]add https://github.com/MGYamada/Qailo.jl
+```
+
 ## Circuit notation
 
 ```julia
