@@ -12,5 +12,6 @@ include("braket.jl")
 include("gate.jl")
 include("controlled.jl")
 include("measurement.jl")
+include("show.jl")
 
 end
