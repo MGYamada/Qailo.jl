@@ -1,5 +1,7 @@
 struct Gate{T, M, N}
     op::Array{T, M}
+    # mpo::MPO
+    # symbol::String
     ind::NTuple{N, Int}
     function Gate(op::Array{T, M}, ind...) where {T, M}
         N = length(ind)
