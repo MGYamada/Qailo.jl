@@ -1,10 +1,12 @@
 struct Gate{T, M, N}
     op::Array{T, M}
+    # mpo::MPO
+    symbol::String
     ind::NTuple{N, Int}
-    function Gate(op::Array{T, M}, ind...) where {T, M}
+    function Gate(op::Array{T, M}, s, ind...) where {T, M}
         N = length(ind)
         @assert M == 2N
-        new{T, M, N}(op, ind)
+        new{T, M, N}(op, s, ind)
     end
 end
 
