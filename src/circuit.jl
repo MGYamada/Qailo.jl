@@ -12,6 +12,6 @@ end
 
 const Circuit{D} = NTuple{D, Gate}
 
-Base.adjoint(c::Circuit) = reverse(adjoint.(c))
+# Base.adjoint(c::Circuit) = reverse(adjoint.(c))
 
-Base.adjoint(g::Gate{T, M, N}) where {T, M, N} = Gate(Array(reshape(adjoint(reshape(g.op, 1 << N, :)), ntuple(x -> 2, Val(M)))), g.ind...)
+# Base.adjoint(g::Gate{T, M, N}) where {T, M, N} = Gate(Array(reshape(adjoint(reshape(g.op, 1 << N, :)), ntuple(x -> 2, Val(M)))), g.ind...)

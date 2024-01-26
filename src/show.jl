@@ -1,10 +1,12 @@
-Base.show(io::IO, ::MIME"text/plain", g::Gate) = print(io, "Gate", g.symbol, g.ind) # fix later
+Base.show(io::IO, ::MIME"text/plain", g::Gate{T}) where T = print(io, T, " Gate", g.symbol, g.ind)
 
 function Base.show(io::IO, ::MIME"text/plain", c::Circuit)
     N = maximum(maximum(g.ind) for g in c)
+    T = reduce(promote_type, [eltype(g.op) for g in c])
     if N >= 100
-        print("Large circuit with ", N, " qubits")
+        print(io, "Large Circuit with ", N, " qubits")
     else
+        println(io, T, " Circuit with ", N, " qubits")
         for i in 1:N
             print(io, lpad(string(i), 2))
         end

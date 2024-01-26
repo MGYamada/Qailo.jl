@@ -9,13 +9,14 @@ inspired by [qailo in Python](https://github.com/wistaria/qailo).
 
 ## Installation
 
-```julia
+```
 ]add https://github.com/MGYamada/Qailo.jl
 ```
 
 ## Circuit notation
 
 ```julia
+using Qailo
 circ"X(1) Y(2) CZ(1,2)"
 ```
 
@@ -59,6 +60,30 @@ braket"<ψ|CX₁₂|ψ>"
 
 Note that brakets will be read from right to left.
 
+## Measurement
+
+```julia
+ψ = @one 2
+p = prob(apply(ψ, circ"CX₁₂"))
+```
+
+This will return the measurement probability in the `Vector` form.
+If you need something more intuitive, you can use the following function.
+
+```julia
+prob2dict(p; pad = 2)
+```
+
+In this case, the bit index should be read from right to left. You can easily reverse it.
+
+```julia
+prob2dict(p; pad = 2, rev = true)
+```
+
+Here you can read the index from left to right.
+
 ## License
 
 MIT
+
+This work has been supported by <img src="sqai.png" width="50%">.

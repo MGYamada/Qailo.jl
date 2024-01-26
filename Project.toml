@@ -1,7 +1,7 @@
 name = "Qailo"
 uuid = "4d0adafa-859c-4b43-9a71-d909ddf637ff"
 authors = ["MGYamada <myspinor@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
