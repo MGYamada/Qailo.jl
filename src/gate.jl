@@ -18,4 +18,4 @@ P(phi::T, i, S = Float64) where T <: Real = Gate(PhaseP(convert(S, phi)), " P", 
 
 # Two-qubit gates
 
-SWAP(i, j, T = Float64) = Gate(reshape([one(T) zero(T) zero(T) zero(T); zero(T) zero(T) one(T) zero(T); zero(T) one(T) zero(T) zero(T); zero(T) zero(T) zero(T) one(T)], 2, 2, 2, 2), "SWAP", i, j)
+SWAP(i, j, T = Float64) = Gate(permutedims(reshape(Matrix{T}(I, 4, 4), 2, 2, 2, 2), [2, 1, 3, 4]), "SWAP", i, j)

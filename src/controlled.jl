@@ -1,11 +1,11 @@
-function controlled(u::Matrix{T}) where T
-    i, j = size(u)
-    permutedims(reshape(cat(Matrix{T}(I, i, j), u; dims = (1, 2)), i, 2, j, 2), [2, 1, 4, 3])
-end
+controlled(g::Gate{T, M, N}, i) where {T, M, N} = Gate(permutedims(reshape(kron(vec(Matrix{T}(I, 2 ^ N, 2 ^ N)), [one(T), zero(T), zero(T), zero(T)]) .+ kron(vec(g.op), [zero(T), zero(T), zero(T), one(T)]), 2, 2, size(g.op)...), [1, 3:(N + 2)..., 2, (N + 3):(2N + 2)...]), " C" * g.symbol, i, g.ind...)
 
-CX(i, j, T = Float64) = Gate(controlled(PauliX(T)), " C X", i, j)
-CY(i, j, T = ComplexF64) = Gate(controlled(PauliY(T)), " C Y", i, j)
-CZ(i, j, T = Float64) = Gate(controlled(PauliZ(T)), " C Z", i, j)
-CP(phi::T, i, j, S = Float64) where T <: Real = Gate(controlled(PhaseP(convert(S, phi))), " C P", i, j)
+CX(i, j, T = Float64) = controlled(X(j, T), i)
+CY(i, j, T = ComplexF64) = controlled(Y(j, T), i)
+CZ(i, j, T = Float64) = controlled(Z(j, T), i)
+CP(phi::T, i, j, S = Float64) where T <: Real = controlled(P(phi, j), i)
 
-CCX(i, j, k, T = Float64) = Gate(reshape(controlled(reshape(controlled(PauliX(T)), 4, 4)), 2, 2, 2, 2, 2, 2), " C C X", i, j, k) # fix later
+CCX(i, j, k, T = Float64) = controlled(CX(j, k, T), i)
+CCY(i, j, k, T = ComplexF64) = controlled(CY(j, k, T), i)
+CCZ(i, j, k, T = Float64) = controlled(CZ(j, k, T), i)
+CCP(phi::T, i, j, k, S = Float64) where T <: Real = controlled(CP(phi, j, k, S), i)
