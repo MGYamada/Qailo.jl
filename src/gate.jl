@@ -15,6 +15,7 @@ H(i, T = Float64) = Gate([one(T) one(T); one(T) -one(T)] ./ sqrt(2), " H", i)
 S(i, T = ComplexF64) = Gate(PhaseS(T), " S", i)
 T(i, S = Float64) = Gate(PhaseP(convert(S, π) / 4), " T", i)
 P(phi::T, i, S = Float64) where T <: Real = Gate(PhaseP(convert(S, phi)), " P", i)
+# TODO: currying
 
 # Two-qubit gates
 
